@@ -13,11 +13,9 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import com.example.simplecalendar.CalendarViewModel
 import java.time.DayOfWeek
-import java.time.LocalDate
 import java.time.YearMonth
 import java.time.format.TextStyle
 import java.util.*
@@ -27,7 +25,7 @@ import java.util.*
 fun CalendarScreen(navController: NavHostController, viewModel: CalendarViewModel) {
     var currentMonth by remember { mutableStateOf(YearMonth.now()) }
     var expanded by remember { mutableStateOf(false) }
-    val context = LocalContext.current // To use for saving preferences
+    val context = LocalContext.current
 
     Surface(color = MaterialTheme.colorScheme.background) {
         Column(modifier = Modifier.fillMaxSize().padding(16.dp)) {
@@ -71,6 +69,16 @@ fun CalendarScreen(navController: NavHostController, viewModel: CalendarViewMode
                 style = MaterialTheme.typography.bodyLarge.copy(color = MaterialTheme.colorScheme.onSurface),
                 modifier = Modifier.align(Alignment.CenterHorizontally).padding(bottom = 16.dp)
             )
+
+            Spacer(modifier = Modifier.height(16.dp))
+
+            Button(
+                onClick = { navController.navigate("shoppingList") },
+                modifier = Modifier.fillMaxWidth(),
+                colors = ButtonDefaults.buttonColors(containerColor = MaterialTheme.colorScheme.primary)
+            ) {
+                Text("Go to Shopping List", color = MaterialTheme.colorScheme.onPrimary)
+            }
 
             // Theme switch dropdown
             Box(

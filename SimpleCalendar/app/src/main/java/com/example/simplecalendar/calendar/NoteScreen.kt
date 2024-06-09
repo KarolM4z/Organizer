@@ -188,6 +188,14 @@ fun NoteScreen(navController: NavHostController, viewModel: CalendarViewModel, d
                 }
 
                 Button(
+                    onClick = { navController.navigate("shoppingList") },
+                    modifier = Modifier.fillMaxWidth(),
+                    colors = ButtonDefaults.buttonColors(containerColor = MaterialTheme.colorScheme.primary)
+                ) {
+                    Text("Go to Shopping List", color = MaterialTheme.colorScheme.onPrimary)
+                }
+
+                Button(
                     onClick = { navController.popBackStack() },
                     modifier = Modifier.fillMaxWidth().padding(16.dp),
                     colors = ButtonDefaults.buttonColors(containerColor = MaterialTheme.colorScheme.primary)
